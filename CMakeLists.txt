@@ -1,7 +1,7 @@
 cmake_minimum_required( VERSION 3.2 )
 project( unity_test )
 
-set( UNITY_ROOT lib/unity )
+set( UNITY_ROOT lib/Unity )
 
 include_directories( ${UNITY_ROOT}/src )
 include_directories( ${UNITY_ROOT}/extras/fixture/src )
@@ -19,7 +19,7 @@ set(
 set(
     TEST_FILES
 
-        test/sample_test.c
+        test/testcases/sample_test.c
 )
 
 set(
@@ -28,4 +28,12 @@ set(
         src/sample.c
 )
 
-add_executable( unity_test ${SOURCE_FILES} ${TEST_FILES} ${UNITY_FILES} )
+set(
+    TEST_RUNNER_FILES
+
+        test/runner/sample_test_runner.c
+        test/runner/all_tests.c
+)
+
+
+add_executable( unity_test ${SOURCE_FILES} ${TEST_FILES} ${TEST_RUNNER_FILES} ${UNITY_FILES} )
